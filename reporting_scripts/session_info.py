@@ -13,7 +13,8 @@ from datetime import datetime
 from base_edx import EdXConnection
 from generate_csv_report import CSV
 
-connection = EdXConnection('tracking_atoc185x')
+DATABASE_NAME = 'atoc185x'
+connection = EdXConnection(DATABASE_NAME,'tracking_atoc185x')
 collection = connection.get_access_to_collection()
 
 query = collection['tracking_atoc185x'].find()
