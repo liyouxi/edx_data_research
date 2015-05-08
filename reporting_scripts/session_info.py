@@ -4,7 +4,7 @@ did they stay logged in
 
 Usage:
 
-python session_info.py
+python session_info.py <db_name>
 
 '''
 import csv
@@ -12,12 +12,13 @@ from datetime import datetime
 
 from base_edx import EdXConnection
 from generate_csv_report import CSV
+import sys
 
-DATABASE_NAME = 'atoc185x'
-connection = EdXConnection(DATABASE_NAME,'tracking_atoc185x')
+db_name = sys.argv[1]
+connection = EdXConnection(db_name,'tracking')
 collection = connection.get_access_to_collection()
 
-query = collection['tracking_atoc185x'].find()
+query = collection['tracking'].find()
 users_to_sessions = {}
 fail = []
 for index, item in enumerate(query):
